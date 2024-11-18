@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('games', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('producer');
-            $table->text('description');
-            $table->float('price');
-            $table->timestamps();
-            
+        Schema::table('games', function (Blueprint $table) {
+            $table->string('cover')->default('default/sad-face.png');
         });
     }
 
@@ -27,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('games');
+        Schema::table('games', function (Blueprint $table) {
+            $table->dropColumn('cover');
+        });
     }
 };

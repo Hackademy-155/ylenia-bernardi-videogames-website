@@ -11,7 +11,7 @@
                     <a class="nav-link active" href="#">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Games</a>
+                    <a class="nav-link active" href="{{route('game.index')}}">Games</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="{{route('game.create')}}">Insert Game</a>
