@@ -39,8 +39,29 @@ class GameController extends Controller
         return view('game.index', compact('games'));
     }
 
+    /* funzione show rinominata "details" */
     public function details(Game $game){
         return view('game.details', compact('game'));
     }
 
+    public function edit(Game $game){
+        return view('game.edit', compact('game'));
+    }
+
+    public function update(Request $request, Game $game){
+        $game->update([
+            'title' => $request->title,
+            'producer' => $request->producer,
+            'price' => $request->price,
+            'description' => $request->description,
+            'cover' => $request->file('cover') ? $request->file('cover')->store('covers-games', 'public') : $game->cover
+        ]);
+        return redirect(route('game.details', ['game' => $game->id]))->with('message', 'Il gioco è stato modificato con successo.');
+    }
+    
+
+    public function delete(Game $game){
+        $game->delete();
+        return redirect(route('game.index'))->with('message', 'Il gioco è stato eliminato con successo.');
+    }
 }

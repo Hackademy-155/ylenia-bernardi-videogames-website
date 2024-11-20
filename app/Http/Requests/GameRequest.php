@@ -22,7 +22,7 @@ class GameRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'=>'required|unique:games',
+            'title'=>'required',
             'producer'=>'required',
             'price'=>'required',
             'description'=>'required',
