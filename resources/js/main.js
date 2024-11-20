@@ -19,3 +19,12 @@ darkModeSwitch.addEventListener('change', () => {
         localStorage.setItem('mode', 'light');
     }
 });
+
+const togglePassword = document.getElementById("togglePassword");
+const password = document.getElementById("password");
+
+togglePassword.addEventListener("click", function () {
+    const type = password.type === "password" ? "text" : "password";
+    password.type = type;
+    this.innerHTML = type === "password" ? '<i class="bi bi-eye-slash"></i>' : '<i class="bi bi-eye"></i>';
+});

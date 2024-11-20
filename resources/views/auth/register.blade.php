@@ -30,11 +30,21 @@
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Inserisci la password">
+                        <div class="input-group">
+                            <input type="password" name="password" class="form-control rounded-start rounded-end" id="password" placeholder="Inserisci la password">
+                            <button type="button" class="btn fs-5 ps-4 rounded-end" id="togglePassword" style="border: none;">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="password_confirmation" class="form-label">Conferma Password</label>
-                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="Inserisci la password">
+                        <div class="input-group">
+                            <input type="password" name="password_confirmation" class="form-control rounded-start rounded-end" id="password_confirmation" placeholder="Conferma password">
+                            <button type="button" class="btn fs-5 ps-4 rounded-end" id="togglePassword" style="border: none;">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
                     </div>               
                     <div class="text-center mb-3">
                         <button type="submit" class="btn btn-primary">Registrati</button>
