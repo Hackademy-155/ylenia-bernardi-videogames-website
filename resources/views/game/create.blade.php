@@ -8,7 +8,7 @@
     </div>
     <div class="container my-5">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 form-container shadow">
                 @if ($errors->any())
                 <div class="alert alert-danger alert-dismissible fade show">
                     <ul class="mb-0">
@@ -18,7 +18,7 @@
                     </ul>
                 </div>
                 @endif
-                <form action="{{route('game.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('game.store')}}" method="POST" enctype="multipart/form-data" class="m-4">
                     @csrf
                     <div class="mb-3">
                         <label for="title" class="form-label">Titolo</label>

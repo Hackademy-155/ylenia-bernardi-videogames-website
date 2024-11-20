@@ -39,7 +39,8 @@ class GameController extends Controller
         return view('game.index', compact('games'));
     }
 
-    public function details(){
-        return view('game.details');
+    public function details(Game $game){
+        return view('game.details', compact('game'));
     }
+
 }
