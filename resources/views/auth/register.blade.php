@@ -32,7 +32,7 @@
                         <label for="password" class="form-label">Password</label>
                         <div class="input-group">
                             <input type="password" name="password" class="form-control rounded-start rounded-end" id="password" placeholder="Inserisci la password">
-                            <button type="button" class="btn fs-5 ps-4 rounded-end" id="togglePassword" style="border: none;">
+                            <button type="button" class="btn fs-5 ps-4 rounded-end toggle-password" data-target="password" style="border: none;">
                                 <i class="bi bi-eye"></i>
                             </button>
                         </div>
@@ -41,11 +41,11 @@
                         <label for="password_confirmation" class="form-label">Conferma Password</label>
                         <div class="input-group">
                             <input type="password" name="password_confirmation" class="form-control rounded-start rounded-end" id="password_confirmation" placeholder="Conferma password">
-                            <button type="button" class="btn fs-5 ps-4 rounded-end" id="togglePassword" style="border: none;">
+                            <button type="button" class="btn fs-5 ps-4 rounded-end toggle-password" data-target="password_confirmation" style="border: none;">
                                 <i class="bi bi-eye"></i>
                             </button>
                         </div>
-                    </div>               
+                    </div>
                     <div class="text-center mb-3">
                         <button type="submit" class="btn btn-primary">Registrati</button>
                     </div>

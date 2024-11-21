@@ -24,7 +24,14 @@ const togglePassword = document.getElementById("togglePassword");
 const password = document.getElementById("password");
 
 togglePassword.addEventListener("click", function () {
-    const type = password.type === "password" ? "text" : "password";
-    password.type = type;
-    this.innerHTML = type === "password" ? '<i class="bi bi-eye-slash"></i>' : '<i class="bi bi-eye"></i>';
+    if (password.type === "password") {
+        password.type = "text";
+        this.innerHTML = '<i class="bi bi-eye-slash"></i>';
+    } else {
+        password.type = "password";
+        this.innerHTML = '<i class="bi bi-eye"></i>';
+    }
 });
+
+
+
