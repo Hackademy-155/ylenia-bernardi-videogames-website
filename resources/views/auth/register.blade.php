@@ -10,10 +10,10 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-6 form-container shadow">
                 @if ($errors->any())
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger d-inline-block text-center">
                         <ul>
                             @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                                <li>{{ $error }}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -22,7 +22,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome</label>
-                        <input type="name" name="name" class="form-control" id="name" placeholder="Inserisci il tuo nome">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Inserisci il tuo nome">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
@@ -31,8 +31,8 @@
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <div class="input-group">
-                            <input type="password" name="password" class="form-control rounded-start rounded-end" id="password" placeholder="Inserisci la password">
-                            <button type="button" class="btn fs-5 ps-4 rounded-end toggle-password" data-target="password" style="border: none;">
+                            <input type="password" name="password" class="form-control rounded-start" id="password" placeholder="Inserisci la password">
+                            <button type="button" class="btn fs-5 toggle-password" data-target="password" style="border: none;">
                                 <i class="bi bi-eye"></i>
                             </button>
                         </div>
@@ -40,8 +40,8 @@
                     <div class="mb-3">
                         <label for="password_confirmation" class="form-label">Conferma Password</label>
                         <div class="input-group">
-                            <input type="password" name="password_confirmation" class="form-control rounded-start rounded-end" id="password_confirmation" placeholder="Conferma password">
-                            <button type="button" class="btn fs-5 ps-4 rounded-end toggle-password" data-target="password_confirmation" style="border: none;">
+                            <input type="password" name="password_confirmation" class="form-control rounded-start" id="password_confirmation" placeholder="Conferma password">
+                            <button type="button" class="btn fs-5 toggle-password" data-target="password_confirmation" style="border: none;">
                                 <i class="bi bi-eye"></i>
                             </button>
                         </div>

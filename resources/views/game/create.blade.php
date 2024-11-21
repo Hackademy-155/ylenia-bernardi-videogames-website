@@ -10,7 +10,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-6 form-container shadow">
                 @if ($errors->any())
-                <div class="alert alert-danger alert-dismissible fade show">
+                <div class="alert alert-danger alert alert-danger d-inline-block text-center">
                     <ul class="mb-0">
                         @foreach($errors->all() as $error)
                         <li>{{$error}}</li>

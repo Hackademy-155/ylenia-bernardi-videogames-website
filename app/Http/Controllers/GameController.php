@@ -2,12 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GameRequest;
 use App\Models\Game;
 use Illuminate\Http\Request;
+use App\Http\Requests\GameRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class GameController extends Controller
+class GameController extends Controller implements HasMiddleware
 {
+    public static function middleware(){
+        return[
+            /* new Middleware('auth'), -> blocca tutte le pagine ai guest */ 
+            new Middleware('auth', only:['create']),
+        ];
+    }
+
     public function create(){
         return view('game.create');
     }
@@ -27,7 +37,8 @@ class GameController extends Controller
             'producer'=> $request->producer,
             'price'=> $request->price,
             'description'=> $request->description,
-            'cover'=> $request->file('cover')->store('covers-games','public')
+            'cover'=> $request->file('cover')->store('covers-games','public'),
+            'user_id'=> Auth::user()->id
         ]);
 
         return redirect(route('homepage'))->with('message', 'Il tuo gioco è stato inserito con successo.');

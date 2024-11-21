@@ -10,10 +10,12 @@
         </div>
     </div>
     @if (session('message'))
-        <div class="alert alert-success">
-            {{session('message')}}
+        <div class="d-flex justify-content-center mt-3">
+            <div class="alert alert-success text-center">
+                {{ session('message') }}
+            </div>
         </div>
-    @endif 
+    @endif
     <div class="container mt-5">
         <div class="row">
             @foreach($games as $game)

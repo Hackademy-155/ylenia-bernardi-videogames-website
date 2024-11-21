@@ -20,18 +20,21 @@ darkModeSwitch.addEventListener('change', () => {
     }
 });
 
-const togglePassword = document.getElementById("togglePassword");
-const password = document.getElementById("password");
+document.querySelectorAll('.toggle-password').forEach(button => {
+    button.addEventListener('click', function () {
+        const targetId = this.getAttribute('data-target');
+        const targetInput = document.getElementById(targetId);
 
-togglePassword.addEventListener("click", function () {
-    if (password.type === "password") {
-        password.type = "text";
-        this.innerHTML = '<i class="bi bi-eye-slash"></i>';
-    } else {
-        password.type = "password";
-        this.innerHTML = '<i class="bi bi-eye"></i>';
-    }
+        if (targetInput.type === 'password') {
+            targetInput.type = 'text';
+            this.innerHTML = '<i class="bi bi-eye-slash"></i>';
+        } else {
+            targetInput.type = 'password';
+            this.innerHTML = '<i class="bi bi-eye"></i>';
+        }
+    });
 });
+
 
 
 

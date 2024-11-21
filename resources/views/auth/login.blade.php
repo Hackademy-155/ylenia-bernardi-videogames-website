@@ -18,8 +18,8 @@
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <div class="input-group">
-                            <input type="password" name="password" class="form-control rounded-start rounded-end" id="password" placeholder="Inserisci la password">
-                            <button type="button" class="btn fs-5 ps-4 rounded-end" id="togglePassword" style="border: none;">
+                            <input type="password" name="password" class="form-control rounded-start" id="password" placeholder="Inserisci la password">
+                            <button type="button" class="btn fs-5 toggle-password" data-target="password" style="border: none;">
                                 <i class="bi bi-eye"></i>
                             </button>
                         </div>
@@ -29,7 +29,7 @@
                         <label class="form-check-label" for="remember">
                             Remember me
                         </label>
-                    </div>                    
+                    </div>
                     <div class="text-center mb-3">
                         <button type="submit" class="btn btn-primary">Accedi</button>
                     </div>
@@ -39,6 +39,6 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> 
     <x-footer/>
 </x-layout>
