@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Console;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class ConsoleController extends Controller
+class ConsoleController extends Controller implements HasMiddleware
 {
+    public static function middleware(){
+        return[
+            /* new Middleware('auth'), -> blocca tutte le pagine ai guest */ 
+            new Middleware('auth', only:['create']),
+        ];
+    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -21,7 +31,7 @@ class ConsoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('console.create');
     }
 
     /**
@@ -29,8 +39,18 @@ class ConsoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $console=Console::create([
+            'name'=> $request->name,
+            'brand'=> $request->brand,
+            'photo'=> $request->file('photo')->store('photo-consoles','public'),
+            'logo'=> $request->file('logo')->store('logo-consoles','public'),
+            'description'=> $request->description,
+            'user_id'=> Auth::user()->id
+        ]);
+
+        return redirect(route('homepage'))->with('message', 'La tua console è stata inserita con successo.');
     }
+    
 
     /**
      * Display the specified resource.

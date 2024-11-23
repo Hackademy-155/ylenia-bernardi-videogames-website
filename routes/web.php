@@ -17,3 +17,5 @@ Route::put('/game/update/{game}',[GameController::class, 'update'])->name('game.
 Route::delete('/game/delete/{game}',[GameController::class, 'delete'])->name('game.delete');
 
 Route::get('/console/index',[ConsoleController::class, 'index'])->name('console.index');
+Route::get('/console/create',[ConsoleController::class, 'create'])->name('console.create');
+Route::post('/console/store', [ConsoleController::class, 'store'])->name('console.store');

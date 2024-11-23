@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Console extends Model
 {
-    protected $fillable = ['name','brand','logo','description'];
+    protected $fillable = ['name','brand','photo','logo','description'];
 }

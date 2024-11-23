@@ -42,7 +42,8 @@
             @endforeach
             @else
                 <div class="col-12 text-center text-secondary">
-                    <p>Non hai giochi associati al tuo account.</p>
+                    <i class="bi bi-emoji-frown fs-1"></i>
+                    <h4>Non hai giochi associati al tuo account.</h4>
                 </div>
             @endif
         </div>

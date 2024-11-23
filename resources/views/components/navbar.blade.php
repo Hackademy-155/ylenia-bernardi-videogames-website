@@ -20,6 +20,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('game.create')}}">Insert Game</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('console.create')}}">Insert Console</a>
+                </li>
                 @endauth
             </ul>
             <ul class="navbar-nav d-flex align-items-center"> 

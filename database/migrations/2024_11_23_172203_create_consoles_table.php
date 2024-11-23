@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('brand');
+            $table->string('photo')->default('default/sad-face.png');
             $table->string('logo')->default('default/sad-face.png');
             $table->text('description');
             $table->timestamps();
