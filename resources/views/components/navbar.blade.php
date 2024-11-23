@@ -13,6 +13,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('game.index')}}">Games</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('console.index')}}">Consoles</a>
+                </li>
                 @auth
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('game.create')}}">Insert Game</a>

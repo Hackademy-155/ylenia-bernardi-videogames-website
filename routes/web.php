@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PublicController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ConsoleController;
 
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/dashboard', [PublicController::class, 'dashboard'])->name('dashboard');
@@ -14,3 +15,5 @@ Route::get('/game/details/{game}',[GameController::class, 'details'])->name('gam
 Route::get('/game/edit/{game}',[GameController::class, 'edit'])->name('game.edit');
 Route::put('/game/update/{game}',[GameController::class, 'update'])->name('game.update');
 Route::delete('/game/delete/{game}',[GameController::class, 'delete'])->name('game.delete');
+
+Route::get('/console/index',[ConsoleController::class, 'index'])->name('console.index');
