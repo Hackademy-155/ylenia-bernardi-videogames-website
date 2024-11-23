@@ -5,6 +5,11 @@
     flex-wrap: wrap;
 }
 
+.console-card-container {
+    position: relative; 
+    overflow: visible; 
+}
+
 .row {
     display: flex;
     justify-content: center;
@@ -25,20 +30,23 @@
 }
 
 .console-card-img {
+    width: 120%;
     height: 60%;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
+    object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+    left: -5%;
 }
 
 .console-card-info {
-    padding-top: 15px; /* Ridotto il padding-top per avvicinare il brand al nome */
+    padding-top: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 45%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .console-text-title {
@@ -76,8 +84,9 @@
 }
 
 .console-card:hover .console-card-img {
+    transform: scale(1.2);
+    z-index: 2;
     transform: translateY(-40%);
-    box-shadow: rgba(0, 123, 255, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
 }
 
 .console-card:hover .console-card-button {

@@ -25,10 +25,8 @@
                                 <p>{{$game->description}}</p>
                             </div>
                             <div class="row mb-2"> 
-                                <div class="col-2">
-                                    <h5>Produttori:</h5>
-                                </div>
-                                <div class="col-8">
+                                <div class="d-flex align-items-center mb-2">
+                                    <h5 class="me-2 mb-0">Produttori:</h5>
                                     <p class="mb-0 text-muted">{{$game->producer}}</p>
                                 </div>
                             </div>

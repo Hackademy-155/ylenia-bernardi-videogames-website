@@ -144,3 +144,7 @@
     color: #ffc107;
     transition: color 0.3s;
 }
+
+.bg-box{
+    background-color: #cccccc3e;
+}

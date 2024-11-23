@@ -19,3 +19,7 @@ Route::delete('/game/delete/{game}',[GameController::class, 'delete'])->name('ga
 Route::get('/console/index',[ConsoleController::class, 'index'])->name('console.index');
 Route::get('/console/create',[ConsoleController::class, 'create'])->name('console.create');
 Route::post('/console/store', [ConsoleController::class, 'store'])->name('console.store');
+Route::get('/console/show/{console}',[ConsoleController::class, 'show'])->name('console.show');
+Route::get('/console/edit/{console}', [ConsoleController::class, 'edit'])->name('console.edit');
+Route::put('/console/update/{console}',[ConsoleController::class, 'update'])->name('console.update');
+Route::delete('/console/delete/{console}',[ConsoleController::class, 'destroy'])->name('console.delete');

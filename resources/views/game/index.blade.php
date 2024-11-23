@@ -9,6 +9,12 @@
             </div>
         </div>
     </div>
+    @if (count($games) < 0)
+        <div class="col-12 text-center text-secondary">
+            <i class="bi bi-emoji-grimace fs-1"></i>
+            <h4>Non è presente alcun gioco.</h4>
+        </div>
+    @endif
     @if (session('message'))
         <div class="d-flex justify-content-center mt-3">
             <div class="alert alert-success text-center">

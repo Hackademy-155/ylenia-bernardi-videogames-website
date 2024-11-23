@@ -44,8 +44,7 @@ class ConsoleController extends Controller implements HasMiddleware
             'brand'=> $request->brand,
             'photo'=> $request->file('photo')->store('photo-consoles','public'),
             'logo'=> $request->file('logo')->store('logo-consoles','public'),
-            'description'=> $request->description,
-            'user_id'=> Auth::user()->id
+            'description'=> $request->description
         ]);
 
         return redirect(route('homepage'))->with('message', 'La tua console è stata inserita con successo.');
@@ -57,7 +56,7 @@ class ConsoleController extends Controller implements HasMiddleware
      */
     public function show(Console $console)
     {
-        //
+        return view('console.show', compact('console'));
     }
 
     /**
@@ -65,7 +64,7 @@ class ConsoleController extends Controller implements HasMiddleware
      */
     public function edit(Console $console)
     {
-        //
+        return view('console.edit', compact('console'));
     }
 
     /**
@@ -73,7 +72,15 @@ class ConsoleController extends Controller implements HasMiddleware
      */
     public function update(Request $request, Console $console)
     {
-        //
+        $console->update([
+            'name'=> $request->name,
+            'brand'=> $request->brand,
+            'photo'=> $request->file('photo') ? $request->file('photo')->store('photo-consoles', 'public') : $console->photo,
+            'logo'=>  $request->file('logo') ? $request->file('logo')->store('logo-consoles', 'public') : $console->logo,
+            'description'=> $request->description,
+        ]);
+
+        return redirect(route('homepage'))->with('message', 'La console è stata modificata con successo.');
     }
 
     /**
@@ -81,6 +88,7 @@ class ConsoleController extends Controller implements HasMiddleware
      */
     public function destroy(Console $console)
     {
-        //
+        $console->delete();
+        return redirect(route('console.index'))->with('message', 'La console è stata eliminata con successo.');
     }
 }
