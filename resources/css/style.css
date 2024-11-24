@@ -148,3 +148,12 @@
 .bg-box{
     background-color: #cccccc3e;
 }
+
+.back-icon{
+    color: #ccc; 
+    margin-bottom: 0.001px;
+}
+
+.back-icon:hover {
+    color: #6c757d; 
+}

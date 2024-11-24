@@ -1,10 +1,11 @@
 <x-layout>
-    <div class="container py-5">
-        <div class="row mb-4 text-center">
-            <div class="col-12">
-                <h2 class="mb-1">
-                    Modifica del gioco: {{$game->title}}
-                </h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="{{route('game.details', $game)}}"><i class="bi bi-arrow-left-circle-fill account me-4 back-icon"></i></a>
+                    <h1 class="my-5 d-inline-block">Modifica della console: {{$game->title}}</h1>
+                </div>
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use App\Models\Console;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +32,8 @@ class ConsoleController extends Controller implements HasMiddleware
      */
     public function create()
     {
-        return view('console.create');
+        $games = Game::all();
+        return view('console.create', compact('games'));
     }
 
     /**
@@ -47,6 +49,7 @@ class ConsoleController extends Controller implements HasMiddleware
             'description'=> $request->description
         ]);
 
+        $console->games()->attach($request->games);
         return redirect(route('homepage'))->with('message', 'La tua console è stata inserita con successo.');
     }
     
@@ -56,7 +59,8 @@ class ConsoleController extends Controller implements HasMiddleware
      */
     public function show(Console $console)
     {
-        return view('console.show', compact('console'));
+        $games = $console->games;
+        return view('console.show', compact('console','games'));
     }
 
     /**
@@ -64,7 +68,8 @@ class ConsoleController extends Controller implements HasMiddleware
      */
     public function edit(Console $console)
     {
-        return view('console.edit', compact('console'));
+        $games = Game::all();
+        return view('console.edit', compact('console', 'games'));
     }
 
     /**
@@ -80,6 +85,8 @@ class ConsoleController extends Controller implements HasMiddleware
             'description'=> $request->description,
         ]);
 
+        $console->games()->detach();
+        $console->games()->attach($request->games);
         return redirect(route('homepage'))->with('message', 'La console è stata modificata con successo.');
     }
 
@@ -88,6 +95,7 @@ class ConsoleController extends Controller implements HasMiddleware
      */
     public function destroy(Console $console)
     {
+        $console->games()->detach();
         $console->delete();
         return redirect(route('console.index'))->with('message', 'La console è stata eliminata con successo.');
     }

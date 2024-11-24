@@ -1,6 +1,6 @@
 <x-layout>
-    <div class="container py-5">
-        <div class="row mb-4 text-center">
+    <div class="container py-5 d-flex justify-content-center align-items-center">
+        <div class="row mb-4 text-center w-100">
             <div class="col-12">
                 <h2 class="mb-4">
                     {{$console->name}}
@@ -14,7 +14,7 @@
             </div>
         </div>
         @endif
-        <div class="row gy-4">
+        <div class="row gy-4 w-100">
             <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
                 <img src="{{Storage::url($console->photo)}}" class="h-20">
             </div>
@@ -61,21 +61,62 @@
                 </div>
                 <div class="d-flex flex-column align-items-center">
                     <p class="text-secondary">
-                        Vorresti modificare le info riguardo questo gioco? 
+                        Vorresti modificare le info riguardo questa console? 
                     </p>
-                    <a href="{{route('console.edit', $console)}}" class="btn btn-warning">Modifica Gioco</a>
+                    <a href="{{route('console.edit', $console)}}" class="btn btn-warning">Modifica Console</a>
                 </div>
                 <div class="d-flex flex-column align-items-center">
                     <p class="text-secondary">
-                        Vorresti eliminare questo gioco?
+                        Vorresti eliminare questa console?
                     </p>
-                    <form action="{{route('console.delete', $console)}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Elimina Gioco</button>
-                    </form>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConsoleModal">
+                        Elimina Console
+                    </button>
+                </div>
+                <div class="modal fade" id="deleteConsoleModal" tabindex="-1" aria-labelledby="deleteConsoleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteConsoleModalLabel">Eliminazione Console</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Sei sicuro di voler eliminare questa console?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                <form action="{{route('console.delete', $console)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Elimina Console</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
+            @if (count($console->games))
+            <div class="row mb-4 text-center mt-5">
+                <div class="col-12">
+                    <h3 class="mb-4">Giochi disponibili per questa console</h3>
+                </div>
+            </div>
+            <div class="container mt-5">
+                <div class="row justify-content-center g-3">
+                    @foreach($games as $game)
+                    <div class="col-12 col-md-4 my-4">
+                        <x-card :game="$game"/>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            @else
+            <div class="row col-12 text-center text-secondary mb-5" style="margin-top: 30px">
+                <i class="bi bi-emoji-grimace fs-1"></i>
+                <h4>Non è presente alcun gioco per questa console.</h4>
+            </div>
+            @endif
         </div>
     </div>
     <x-footer/>
