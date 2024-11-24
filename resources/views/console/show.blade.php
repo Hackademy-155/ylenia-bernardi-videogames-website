@@ -34,6 +34,22 @@
                             <p class="mb-0 text-muted">{{$console->brand}}</p>
                         </div>
                     </div>
+                    <div class="row mb-2"> 
+                        <div class="d-flex align-items-center mb-2">
+                            <h5 class="me-2 mb-0">Data di uscita:</h5>
+                            <p class="mb-0 text-secondary">
+                                @if($console->released)
+                                    {{ date('d F Y', strtotime($console->released)) }}
+                                @else
+                                    Dato non disponibile
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-2"> 
+                        <h5 class="me-2 mb-0">Prezzo:</h5>
+                        <p class="mb-0">${{$console->price}}</p>
+                    </div>
                     <div class="d-flex align-items-center mt-2">
                         @if($console->user_id)
                         <p class="me-2 mb-0 text-secondary fs-6 fw-light ms-auto">

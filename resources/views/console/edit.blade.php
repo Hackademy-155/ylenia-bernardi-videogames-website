@@ -33,6 +33,14 @@
                         <input type="text" name="brand" class="form-control" id="brand" placeholder="Inserisci il brand" value="{{$console->brand}}">
                     </div>
                     <div class="mb-3">
+                        <label for="released" class="form-label">Data di uscita</label>
+                        <input type="date" name="released" class="form-control" id="released" placeholder="Inserisci la data di uscita" value="{{ old('released', \Carbon\Carbon::parse($console->released)->format('Y-m-d')) }}"> <!-- funzione che permette di visualizzare la data vecchia durate la modifica del gioco -->
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Prezzo</label>
+                        <input type="text" name="price" class="form-control" id="price" placeholder="Inserisci il prezzo" value="{{$console->price}}">
+                    </div>
+                    <div class="mb-3">
                         <label for="description" class="form-label">Descrizione</label>
                         <textarea name="description" class="form-control" id="description" rows="5" placeholder="Descrivi il gioco">{{$console->description}}</textarea>
                     </div>

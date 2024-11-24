@@ -39,6 +39,7 @@ class GameController extends Controller implements HasMiddleware
             'producer'=> $request->producer,
             'price'=> $request->price,
             'description'=> $request->description,
+            'released' => $request->released,
             'cover'=> $request->file('cover')->store('covers-games','public'),
             'user_id'=> Auth::user()->id
         ]);
@@ -60,7 +61,8 @@ class GameController extends Controller implements HasMiddleware
     }
 
     public function edit(Game $game){
-        return view('game.edit', compact('game'));
+        $consoles = Console::all();
+        return view('game.edit', compact('game','consoles'));
     }
 
     public function update(Request $request, Game $game){
@@ -69,6 +71,7 @@ class GameController extends Controller implements HasMiddleware
             'producer' => $request->producer,
             'price' => $request->price,
             'description' => $request->description,
+            'released' => $request->released,
             'cover' => $request->file('cover') ? $request->file('cover')->store('covers-games', 'public') : $game->cover
         ]);
 

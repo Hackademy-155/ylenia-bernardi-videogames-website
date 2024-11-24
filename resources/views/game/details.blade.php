@@ -31,10 +31,22 @@
                             <p class="mb-0 text-muted">{{$game->producer}}</p>
                         </div>
                     </div>
+                    <div class="row mb-2"> 
+                        <div class="d-flex align-items-center mb-2">
+                            <h5 class="me-2 mb-0">Data di uscita:</h5>
+                            <p class="mb-0 text-secondary">
+                                @if($game->released)
+                                    {{ date('d F Y', strtotime($game->released)) }}
+                                @else
+                                    Dato non disponibile
+                                @endif
+                            </p>
+                        </div>
+                    </div>
                     @if($game->price == 0)
                     <div class="d-flex align-items-center mb-2"> 
                         <h5 class="me-2 mb-0">Prezzo:</h5>
-                        <p class="mb-0">Free to Play</p>
+                        <p class="mb-0 text-primary">Free to Play</p>
                     </div>
                     @else
                     <div class="d-flex align-items-center mb-2"> 
@@ -45,8 +57,9 @@
                     <div class="d-flex align-items-center mt-2">
                         @if($game->user_id)
                         <p class="me-2 mb-0 text-secondary fs-6 fw-light ms-auto">
-                            Caricato da: <a href="#" class="text-reset">{{$game->user->name}}</a>
+                            Caricato da: <a href="{{route(dashboard)}}" class="text-reset">{{$game->user->name}}</a>
                         </p>
+                        <!-- come faccio a far reindirizzare l'utente alla dashboard dell'utente che ha creato il gioco ?  -->
                         @endif
                     </div>                    
                 </div>

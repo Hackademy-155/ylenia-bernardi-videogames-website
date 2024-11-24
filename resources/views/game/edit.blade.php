@@ -37,6 +37,10 @@
                         <input type="text" name="price" class="form-control" id="price" placeholder="Inserisci il prezzo" value="{{$game->price}}">
                     </div>
                     <div class="mb-3">
+                        <label for="released" class="form-label">Data di uscita</label>
+                        <input type="date" name="released" class="form-control" id="released" placeholder="Inserisci la data di uscita" value="{{ old('released', \Carbon\Carbon::parse($game->released)->format('Y-m-d')) }}"> <!-- funzione che permette di visualizzare la data vecchia durate la modifica del gioco -->
+                    </div>
+                    <div class="mb-3">
                         <label for="description" class="form-label">Descrizione</label>
                         <textarea name="description" class="form-control" id="description" rows="5" placeholder="Descrivi il gioco">{{$game->description}}</textarea>
                     </div>
@@ -54,7 +58,7 @@
                             @foreach($consoles as $console)
                                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                                     <div class="form-check d-flex align-items-center "> 
-                                        <input class="form-check-input me-2" type="checkbox" id="console-{{$console->id}}" value="{{$console->id}}" name="consoles[]">
+                                        <input class="form-check-input me-2" type="checkbox" id="console-{{$console->id}}" value="{{$console->id}}" name="consoles[]" @if($game->consoles->contains($console->id)) checked @endif>
                                         <label class="form-check-label" for="console-{{$console->id}}">{{$console->name}}</label>
                                     </div>
                                 </div>

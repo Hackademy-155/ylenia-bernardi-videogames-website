@@ -44,6 +44,7 @@ class ConsoleController extends Controller implements HasMiddleware
         $console=Console::create([
             'name'=> $request->name,
             'brand'=> $request->brand,
+            'price'=> $request->price,
             'photo'=> $request->file('photo')->store('photo-consoles','public'),
             'logo'=> $request->file('logo')->store('logo-consoles','public'),
             'description'=> $request->description
@@ -80,6 +81,8 @@ class ConsoleController extends Controller implements HasMiddleware
         $console->update([
             'name'=> $request->name,
             'brand'=> $request->brand,
+            'released' => $request->released,
+            'price'=> $request->price,
             'photo'=> $request->file('photo') ? $request->file('photo')->store('photo-consoles', 'public') : $console->photo,
             'logo'=>  $request->file('logo') ? $request->file('logo')->store('logo-consoles', 'public') : $console->logo,
             'description'=> $request->description,

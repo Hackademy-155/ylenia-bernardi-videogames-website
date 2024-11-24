@@ -33,6 +33,10 @@
                         <input type="text" name="price" class="form-control" id="price" placeholder="Inserisci il prezzo" value="{{old('price')}}">
                     </div>
                     <div class="mb-3">
+                        <label for="released" class="form-label">Data di uscita</label>
+                        <input type="date" name="released" class="form-control" id="released" placeholder="Inserisci la data di uscita" value="{{old('released')}}">
+                    </div>
+                    <div class="mb-3">
                         <label for="description" class="form-label">Descrizione</label>
                         <textarea name="description" class="form-control" id="description" rows="5" placeholder="Descrivi il gioco">{{old('description')}}</textarea>
                     </div>
