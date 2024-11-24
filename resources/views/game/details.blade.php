@@ -131,7 +131,7 @@
                 @if (count($game->consoles))
                 <div class="row mb-4 text-center mt-5">
                     <div class="col-12">
-                        <h3 class="mb-4">Consoles disponibili per questo gioco</h3>
+                        <h3 class="mb-4">Disponibile per</h3>
                     </div>
                 </div>
                 <div class="container mt-5">
