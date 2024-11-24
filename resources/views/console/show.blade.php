@@ -44,9 +44,10 @@
                 </div>
             </div>
             <div class="text-center pt-5 d-flex justify-content-around">
+                @auth
                 <div class="rating">
                     <p class="text-secondary">
-                        Valuta questo gioco!
+                        Valuta questa console!
                     </p>
                     <input value="5" name="rating" id="star5" type="radio">
                     <label for="star5"></label>
@@ -59,64 +60,73 @@
                     <input value="1" name="rating" id="star1" type="radio">
                     <label for="star1"></label>
                 </div>
-                <div class="d-flex flex-column align-items-center">
-                    <p class="text-secondary">
-                        Vorresti modificare le info riguardo questa console? 
-                    </p>
-                    <a href="{{route('console.edit', $console)}}" class="btn btn-warning">Modifica Console</a>
-                </div>
-                <div class="d-flex flex-column align-items-center">
-                    <p class="text-secondary">
-                        Vorresti eliminare questa console?
-                    </p>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConsoleModal">
-                        Elimina Console
-                    </button>
-                </div>
-                <div class="modal fade" id="deleteConsoleModal" tabindex="-1" aria-labelledby="deleteConsoleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="deleteConsoleModalLabel">Eliminazione Console</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Sei sicuro di voler eliminare questa console?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                                <form action="{{route('console.delete', $console)}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Elimina Console</button>
-                                </form>
+                    <div class="d-flex flex-column align-items-center">
+                        <p class="text-secondary">
+                            Vorresti modificare le info riguardo questa console? 
+                        </p>
+                        <a href="{{route('console.edit', $console)}}" class="btn btn-warning">Modifica Console</a>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <p class="text-secondary">
+                            Vorresti eliminare questa console?
+                        </p>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConsoleModal">
+                            Elimina Console
+                        </button>
+                    </div>
+                    <div class="modal fade" id="deleteConsoleModal" tabindex="-1" aria-labelledby="deleteConsoleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteConsoleModalLabel">Eliminazione Console</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Sei sicuro di voler eliminare questa console?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                    <form action="{{route('console.delete', $console)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Elimina Console</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
+                @else
+                <div class="d-flex flex-column align-items-center">
+                    <p class="text-secondary">
+                        Effettua l'accesso per valutare, modificare o eliminare questa console.
+                    </p>
+                    <a href="{{route('login')}}" class="btn btn-primary">Accedi</a>
                 </div>
+                @endauth
             </div>
-            
-            @if (count($console->games))
-            <div class="row mb-4 text-center mt-5">
-                <div class="col-12">
-                    <h3 class="mb-4">Giochi disponibili per questa console</h3>
-                </div>
-            </div>
-            <div class="container mt-5">
-                <div class="row justify-content-center g-3">
-                    @foreach($games as $game)
-                    <div class="col-12 col-md-4 my-4">
-                        <x-card :game="$game"/>
+            <div>
+                @if (count($console->games))
+                    <div class="row mb-4 text-center mt-5">
+                        <div class="col-12">
+                            <h3 class="mb-4">Giochi disponibili per questa console</h3>
+                        </div>
                     </div>
-                    @endforeach
-                </div>
+                    <div class="container mt-5">
+                        <div class="row justify-content-center g-3">
+                            @foreach($games as $game)
+                            <div class="col-12 col-md-4 my-4">
+                                <x-card :game="$game"/>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @else
+                    <div class="row col-12 text-center text-secondary mb-5" style="margin-top: 30px">
+                        <i class="bi bi-emoji-grimace fs-1"></i>
+                        <h4>Non è presente alcun gioco per questa console.</h4>
+                    </div>
+                @endif
             </div>
-            @else
-            <div class="row col-12 text-center text-secondary mb-5" style="margin-top: 30px">
-                <i class="bi bi-emoji-grimace fs-1"></i>
-                <h4>Non è presente alcun gioco per questa console.</h4>
-            </div>
-            @endif
         </div>
     </div>
     <x-footer/>

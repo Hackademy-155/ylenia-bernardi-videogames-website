@@ -40,6 +40,19 @@
                         <label for="cover" class="form-label">Copertina</label>
                         <input type="file" name="cover" class="form-control" id="cover" rows="5" placehol der="Inserisci la copertina del gioco">
                     </div>
+                    <div class="mb-5">
+                        <label class="form-label mb-3">Consoles disponibili per questo gioco</label>
+                        <div class="row g-2">
+                            @foreach($consoles as $console)
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check d-flex align-items-center "> 
+                                        <input class="form-check-input me-2" type="checkbox" id="console-{{$console->id}}" value="{{$console->id}}" name="consoles[]">
+                                        <label class="form-check-label" for="console-{{$console->id}}">{{$console->name}}</label>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Invia dati</button>
                     </div>

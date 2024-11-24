@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Console;
 use Illuminate\Http\Request;
 use App\Http\Requests\GameRequest;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,8 @@ class GameController extends Controller implements HasMiddleware
     }
 
     public function create(){
-        return view('game.create');
+        $consoles = Console::all();
+        return view('game.create', compact('consoles'));
     }
 
     public function store(GameRequest $request){
@@ -41,6 +43,7 @@ class GameController extends Controller implements HasMiddleware
             'user_id'=> Auth::user()->id
         ]);
 
+        $game->consoles()->attach($request->consoles);
         return redirect(route('homepage'))->with('message', 'Il tuo gioco è stato inserito con successo.');
     }
 
@@ -52,7 +55,8 @@ class GameController extends Controller implements HasMiddleware
 
     /* funzione show rinominata "details" */
     public function details(Game $game){
-        return view('game.details', compact('game'));
+        $consoles = $game->consoles;
+        return view('game.details', compact('game','consoles'));
     }
 
     public function edit(Game $game){
@@ -67,11 +71,15 @@ class GameController extends Controller implements HasMiddleware
             'description' => $request->description,
             'cover' => $request->file('cover') ? $request->file('cover')->store('covers-games', 'public') : $game->cover
         ]);
+
+        $game->consoles()->detach();
+        $game->consoles()->attach($request->consoles);
         return redirect(route('game.details', ['game' => $game->id]))->with('message', 'Il gioco è stato modificato con successo.');
     }
     
 
     public function delete(Game $game){
+        $game->consoles()->detach();
         $game->delete();
         return redirect(route('game.index'))->with('message', 'Il gioco è stato eliminato con successo.');
     }

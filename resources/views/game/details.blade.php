@@ -69,51 +69,90 @@
                     <label for="star1"></label>
                 </div>
                 @if (Auth::user() && Auth::user()->id == $game->user_id)
-                    <div class="d-flex flex-column align-items-center">
-                        <p class="text-secondary">
-                            Vorresti modificare le info riguardo questo gioco? 
-                        </p>
-                        <a href="{{route('game.edit', $game)}}" class="btn btn-warning">Modifica Gioco</a>
-                    </div>
-                    <div class="d-flex flex-column align-items-center">
-                        <p class="text-secondary">
-                            Vorresti eliminare questo gioco?
-                        </p>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                            Elimina Gioco
-                        </button>
-                    </div>
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteModalLabel">Eliminazione Gioco</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Sei sicuro di voler eliminare questo gioco?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                                    <form action="{{route('game.delete', $game)}}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Elimina Gioco</button>
-                                    </form>
-                                </div>
+                <div class="d-flex flex-column align-items-center">
+                    <p class="text-secondary">
+                        Vorresti modificare le info riguardo questo gioco? 
+                    </p>
+                    <a href="{{route('game.edit', $game)}}" class="btn btn-warning">Modifica Gioco</a>
+                </div>
+                <div class="d-flex flex-column align-items-center">
+                    <p class="text-secondary">
+                        Vorresti eliminare questo gioco?
+                    </p>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        Elimina Gioco
+                    </button>
+                </div>
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Eliminazione Gioco</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Sei sicuro di voler eliminare questo gioco?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                <form action="{{route('game.delete', $game)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Elimina Gioco</button>
+                                </form>
                             </div>
                         </div>
                     </div>
+                </div>
                 @endif
                 @else
-                    <div class="d-flex flex-column align-items-center">
-                        <p class="text-secondary">
-                            Effettua l'accesso per valutare, modificare o eliminare questo gioco.
-                        </p>
-                        <a href="{{route('login')}}" class="btn btn-primary">Accedi</a>
-                    </div>
+                <div class="d-flex flex-column align-items-center">
+                    <p class="text-secondary">
+                        Effettua l'accesso per valutare, modificare o eliminare questo gioco.
+                    </p>
+                    <a href="{{route('login')}}" class="btn btn-primary">Accedi</a>
+                </div>
                 @endauth
             </div>
+            <div>
+                @if (count($game->consoles))
+                <div class="row mb-4 text-center mt-5">
+                    <div class="col-12">
+                        <h3 class="mb-4">Consoles disponibili per questo gioco</h3>
+                    </div>
+                </div>
+                <div class="container mt-5">
+                    <div class="row justify-content-center g-3">
+                        @foreach($consoles as $console)
+                        <div class="col-md-2 col-4 text-center">
+                            <div class="console-img-wrapper">
+                                @php
+                                $images = [
+                                7 => ['original' => 'media/ps4.svg', 'hover' => 'media/ps4-blue.svg'],
+                                8 => ['original' => 'media/ns.svg', 'hover' => 'media/ns-blue.svg'],
+                                9 => ['original' => 'media/xboxX.png', 'hover' => 'media/xboxX-blue.png'],
+                                10 => ['original' => 'media/playstation5.svg', 'hover' => 'media/playstation5-blue.svg'],
+                                11 => ['original' => 'media/xboxS.svg', 'hover' => 'media/xboxS-blue.svg']
+                                ];
+                                $imagePath = $images[$console->id]['original'] ?? 'default/sad-face.png'; 
+                                $hoverImagePath = $images[$console->id]['hover'] ?? 'default/sad-face.png'; 
+                                @endphp
+                                <a href="{{ route('console.show', $console) }}" class="d-block text-decoration-none text-black">
+                                    <img src="{{ asset($imagePath) }}" alt="{{ $console->name }}" class="img-fluid console-img original-img" style="max-height: 100px; max-width: 100px;" data-hover="{{ asset($hoverImagePath) }}">
+                                    <h6 class="console-name mt-3">{{ $console->name }}</h6>
+                                </a>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @else
+                <div class="row col-12 text-center text-secondary mb-5" style="margin-top: 30px">
+                    <i class="bi bi-emoji-grimace fs-1"></i>
+                    <h4>Non è presente alcuna console per questo gioco.</h4>
+                </div>
+                @endif
+            </div>       
         </div>
     </div>
     <x-footer/>

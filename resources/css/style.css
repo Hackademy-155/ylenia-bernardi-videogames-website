@@ -157,3 +157,30 @@
 .back-icon:hover {
     color: #6c757d; 
 }
+
+.console-img {
+    transition: opacity 0.2s ease, transform 0.2s ease; 
+}
+
+.console-name {
+    transition: color 0.3s ease;
+}
+
+.console-img-wrapper.hover .console-name {
+    color: #2196f3;  
+}
+
+.console-img-wrapper.hover .original-img {
+    transform: scale(1.1);
+    transition: opacity 0.2s ease, transform 0.2s ease; 
+}
+
+.console-name {
+    transition: color 0.3s ease;
+    margin-top: 10px;
+}
+
+
+
+
+
