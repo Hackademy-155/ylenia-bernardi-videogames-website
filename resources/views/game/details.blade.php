@@ -57,7 +57,7 @@
                     <div class="d-flex align-items-center mt-2">
                         @if($game->user_id)
                         <p class="me-2 mb-0 text-secondary fs-6 fw-light ms-auto">
-                            Caricato da: <a href="{{route(dashboard)}}" class="text-reset">{{$game->user->name}}</a>
+                            Caricato da: <a href="#" class="text-reset">{{$game->user->name}}</a>
                         </p>
                         <!-- come faccio a far reindirizzare l'utente alla dashboard dell'utente che ha creato il gioco ?  -->
                         @endif
