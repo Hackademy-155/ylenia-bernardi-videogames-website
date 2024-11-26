@@ -1,15 +1,16 @@
 <x-layout>
+    <x-header>
+        <h1 class="text-white">Tutte le Console</h1>
+    </x-header>
     <div class="container">
         <div class="row text-center mt-5 mb-0">
             <div class="col-12">
-                <h1>Tutte le Console</h1>
                 <p style="color: rgba(0, 0, 0, 0.35);">
                     Clicca su una console per scoprire di più...
                 </p>
             </div>
         </div>
     </div>
-
     <div class="container mt-5">
         <div class="row justify-content-center">
             @if (count($consoles) > 0)

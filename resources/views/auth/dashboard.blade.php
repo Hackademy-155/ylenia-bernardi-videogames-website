@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="mt-5 mb-0 pb-3 text-center">Dashboard di {{ Auth::user()->name }}</h1>
+                <h1 class="mt-5 mb-0 pb-3 text-center">Dashboard di {{ $user->name }}</h1>
                 <p style="color: rgba(0, 0, 0, 0.35);">
                     La lista dei tuoi giochi. Clicca su un gioco per tornare alla sua pagina dettaglio...
                 </p>
@@ -11,8 +11,8 @@
     </div>
     <div class="container my-5">
         <div class="row">
-            @if(Auth::user()->game->isNotEmpty())
-            @foreach (Auth::user()->game as $game)
+            @if($user->game->isNotEmpty())
+            @foreach ($user->game as $game)
                 <div class="row gy-4 justify-content-center position-relative">
                     <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
                         <img src="{{Storage::url($game->cover)}}" class="img-fluid rounded shadow">

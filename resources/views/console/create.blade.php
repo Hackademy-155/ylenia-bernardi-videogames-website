@@ -8,7 +8,7 @@
     </div>
     <div class="container my-5">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-8 form-container shadow">
+            <div class="col-12 col-md-4 col-lg-4 form-container shadow">
                 @if ($errors->any())
                 <div class="alert alert-danger d-inline-block text-center">
                     <ul class="mb-0">
@@ -47,19 +47,6 @@
                     <div class="mb-3">
                         <label for="logo" class="form-label">Logo console</label>
                         <input type="file" name="logo" class="form-control" id="logo" rows="5">
-                    </div>
-                    <div class="mb-5">
-                        <label class="form-label">Giochi disponibili per questa console</label>
-                        <div class="row">
-                            @foreach($games as $game)
-                                <div class="col-12 col-md-6 col-lg-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="{{$game->id}}" value="{{$game->id}}" name="games[]">
-                                        <label class="form-check-label" for="{{$game->id}}">{{$game->title}}</label>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Invia dati</button>

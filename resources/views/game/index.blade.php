@@ -1,11 +1,13 @@
 <x-layout>
+    <x-header>
+        <h1 class="text-white">Tutti i Giochi</h1>
+    </x-header>
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mt-5 mb-0">
-                <h1 class="">Tutti i Giochi</h1>
-                <p style="color: rgba(0, 0, 0, 0.35);">
-                    Clicca su un gioco per scopre di più...
-                </p>
+                <h5 style="color: rgba(136, 127, 127, 0.35);">
+                    Clicca su un gioco per scopre di più.
+                </h5>
             </div>
         </div>
     </div>

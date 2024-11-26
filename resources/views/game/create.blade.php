@@ -8,7 +8,7 @@
     </div>
     <div class="container my-5">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-6 form-container shadow">
+            <div class="col-12 col-md-4 form-container shadow">
                 @if ($errors->any())
                 <div class="alert alert-danger alert alert-danger d-inline-block text-center">
                     <ul class="mb-0">
@@ -46,10 +46,10 @@
                     </div>
                     <div class="mb-5">
                         <label class="form-label mb-3">Consoles disponibili per questo gioco</label>
-                        <div class="row g-2">
+                        <div class="row">
                             @foreach($consoles as $console)
-                                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                                    <div class="form-check d-flex align-items-center "> 
+                                <div class="col-12">
+                                    <div class="form-check d-flex align-items-center"> 
                                         <input class="form-check-input me-2" type="checkbox" id="console-{{$console->id}}" value="{{$console->id}}" name="consoles[]">
                                         <label class="form-check-label" for="console-{{$console->id}}">{{$console->name}}</label>
                                     </div>

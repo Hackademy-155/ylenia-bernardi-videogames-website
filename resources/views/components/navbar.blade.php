@@ -31,7 +31,7 @@
                         <span class="nav-link">Ciao, {{ Auth::user()->name }}</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('dashboard')}}"><i class="bi bi-person account"></i></a>
+                        <a class="nav-link" href="{{route('dashboard', Auth::user())}}"><i class="bi bi-person account"></i></a>
                     </li>
                 @endauth
                 @guest

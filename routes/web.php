@@ -6,7 +6,7 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ConsoleController;
 
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
-Route::get('/dashboard', [PublicController::class, 'dashboard'])->name('dashboard');
+Route::get('/dashboard/{user}', [PublicController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/game/create',[GameController::class, 'create'])->name('game.create');
 Route::post('/game/store', [GameController::class, 'store'])->name('game.store');

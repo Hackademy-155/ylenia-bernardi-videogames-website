@@ -60,19 +60,6 @@
                         <label for="logo" class="form-label">Logo Console</label>
                         <input type="file" name="logo" class="form-control" id="logo">
                     </div>
-                    <div class="mb-5">
-                        <label class="form-label">Giochi disponibili per questa console</label>
-                        <div class="row">
-                            @foreach($games as $game)
-                                <div class="col-12 col-md-6 col-lg-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="{{$game->id}}" value="{{$game->id}}" name="games[]" @if($console->games->contains($game->id)) checked @endif>
-                                        <label class="form-check-label" for="{{$game->id}}">{{$game->title}}</label>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-warning">Applica Modifiche</button>
                     </div>
