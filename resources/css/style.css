@@ -2,6 +2,10 @@
     font-size: 30px;
 }
 
+.nav-link:hover {
+    color: var(--bs-primary) !important;
+}
+
 .backgroundGames {
     background-image: url("/public/media/steam-game-library.jpg.webp");
     background-repeat: no-repeat;
@@ -30,6 +34,24 @@
 }
 
 .backgroundConsoles::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+.backgroundAccessory {
+    background-image: url("/public/media/flat-lay-image-gaming-accessories-devices-including-gaming-console-controllers-headphones-phones_14117-713847.jpg.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.backgroundAccessory::before {
     content: "";
     position: absolute;
     top: 0;
@@ -223,6 +245,7 @@ header .row {
     transition: color 0.3s ease;
     margin-top: 10px;
 }
+
 
 
 

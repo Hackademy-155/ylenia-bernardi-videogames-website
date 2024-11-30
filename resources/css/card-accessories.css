@@ -1,0 +1,41 @@
+.accessory {
+    box-sizing: border-box;
+    width: 190px;
+    height: 254px;
+    background: #f5f5f5;
+    border: 1px solid white;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    border-radius: 17px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-weight: bolder;
+    color: black;
+    overflow: hidden;
+    position: relative;
+}
+
+.accessory-img {
+    max-width: 100%;
+    max-height: 100%; /* Imposta l'altezza massima dell'immagine al 100% della card */
+    object-fit: cover; /* Mantieni l'immagine centrata e adattata */
+    transition: transform 0.3s ease; /* Smooth transition per il cambiamento */
+}
+
+.accessory:hover {
+    border: 2px solid #008bf8;
+    transform: scale(1.05);
+}
+
+.accessory:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+}
+
+.accessory-img:hover {
+    transform: scale(1.05); /* Aggiungi effetto hover anche sull'immagine */
+}

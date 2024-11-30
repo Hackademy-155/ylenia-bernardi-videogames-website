@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ConsoleController;
+use App\Http\Controllers\AccessoryController;
 
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/dashboard/{user}', [PublicController::class, 'dashboard'])->name('dashboard');
@@ -23,3 +24,10 @@ Route::get('/console/show/{console}',[ConsoleController::class, 'show'])->name('
 Route::get('/console/edit/{console}', [ConsoleController::class, 'edit'])->name('console.edit');
 Route::put('/console/update/{console}',[ConsoleController::class, 'update'])->name('console.update');
 Route::delete('/console/delete/{console}',[ConsoleController::class, 'destroy'])->name('console.delete');
+
+Route::get('/accessory/index',[AccessoryController::class, 'index'])->name('accessory.index');
+Route::get('/accessory/create',[AccessoryController::class, 'create'])->name('accessory.create');
+Route::get('/accessory/show/{accessory}',[AccessoryController::class, 'show'])->name('accessory.show');
+Route::get('/accessory/edit/{accessory}', [AccessoryController::class, 'edit'])->name('accessory.edit');
+Route::put('/accessory/update/{accessory}',[AccessoryController::class, 'update'])->name('accessory.update');
+Route::delete('/accessory/delete/{accessory}',[AccessoryController::class, 'destroy'])->name('accessory.delete');

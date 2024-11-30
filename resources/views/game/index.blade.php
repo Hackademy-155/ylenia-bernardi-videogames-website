@@ -3,16 +3,18 @@
         <h1 class="text-white">Tutti i Giochi</h1>
     </x-header>
     <div class="container">
-        <div class="row">
-            <div class="col-12 text-center mt-5 mb-0">
-                <h5 style="color: rgba(136, 127, 127, 0.35);">
-                    Clicca su un gioco per scopre di più.
-                </h5>
+        <div class="row text-center mt-5 mb-0">
+            <div class="col-12">
+                @if (count($games) > 0)
+                    <p style="color: rgba(0, 0, 0, 0.35);">
+                        Clicca su un gioco per scoprire di più...
+                    </p>
+                @endif
             </div>
         </div>
     </div>
     @if (count($games) < 0)
-        <div class="col-12 text-center text-secondary">
+        <div class="col-12 text-center text-secondary mb-5">
             <i class="bi bi-emoji-grimace fs-1"></i>
             <h4>Non è presente alcun gioco.</h4>
         </div>
@@ -33,5 +35,4 @@
             @endforeach
         </div>
     </div>
-    <x-footer/>
 </x-layout>

@@ -5,9 +5,11 @@
     <div class="container">
         <div class="row text-center mt-5 mb-0">
             <div class="col-12">
-                <p style="color: rgba(0, 0, 0, 0.35);">
-                    Clicca su una console per scoprire di più...
-                </p>
+                @if (count($consoles) > 0)
+                    <p style="color: rgba(0, 0, 0, 0.35);">
+                        Clicca su una console per scoprire di più...
+                    </p>
+                @endif
             </div>
         </div>
     </div>
@@ -29,13 +31,11 @@
                     </div>                    
                 @endforeach
             @else
-                <div class="col-12 text-center text-secondary">
+                <div class="col-12 text-center text-secondary mb-5">
                     <i class="bi bi-emoji-grimace fs-1"></i>
                     <h4>Non è presente alcuna console.</h4>
                 </div>
             @endif
         </div>
     </div>
-
-    <x-footer/>
 </x-layout>
