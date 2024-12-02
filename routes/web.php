@@ -30,4 +30,4 @@ Route::get('/accessory/create',[AccessoryController::class, 'create'])->name('ac
 Route::get('/accessory/show/{accessory}',[AccessoryController::class, 'show'])->name('accessory.show');
 Route::get('/accessory/edit/{accessory}', [AccessoryController::class, 'edit'])->name('accessory.edit');
 Route::put('/accessory/update/{accessory}',[AccessoryController::class, 'update'])->name('accessory.update');
-Route::delete('/accessory/delete/{accessory}',[AccessoryController::class, 'destroy'])->name('accessory.delete');
+

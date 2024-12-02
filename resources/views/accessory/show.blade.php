@@ -16,7 +16,7 @@
         @endif
         <div class="row gy-4">
             <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-                <img src="{{ Storage::url($accessory->photo) }}" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: cover;">
+                <img src="{{ Storage::url($accessory->photo) }}" class="img-fluid" style="max-height: 420px; object-fit: cover;">
             </div>
             <div class="col-12 col-md-6">
                 <div class="bg-light p-4 rounded shadow-sm w-100">
@@ -45,9 +45,9 @@
                 </div>
             </div>
         </div>
-        <div class="text-center pt-5 d-flex justify-content-around">
+        <div class="text-center pt-5 d-flex gap-5">
             @auth
-            <div class="rating">
+            <div class="rating mb-4">
                 <p class="text-secondary">
                     Valuta questo gioco!
                 </p>
@@ -63,41 +63,17 @@
                 <label for="star1"></label>
             </div>
             @if (Auth::user())
-            <div class="d-flex flex-column align-items-center">
+            <div class="d-flex flex-column align-items-center mb-4">
                 <p class="text-secondary">
                     Vorresti modificare le info riguardo questo articolo? 
                 </p>
                 <a href="{{route('accessory.edit', $accessory)}}" class="btn btn-warning">Modifica Articolo</a>
             </div>
-            <div class="d-flex flex-column align-items-center">
-                <p class="text-secondary">
-                    Vorresti eliminare questo articolo?
-                </p>
-                <button wire:click="destroy" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                    Elimina Articolo
-                </button>
-            </div>
-            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalLabel">Eliminazione Articolo</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Sei sicuro di voler eliminare questo articolo?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                            <button  wire:click="destroy" type="submit" class="btn btn-danger">Elimina Articolo</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <livewire:delete-accessory :accessory="$accessory"/>
             @endif
             @else
             <div class="d-flex flex-column align-items-center">
-                <p class="text-secondary">
+                <p class="text-secondary mb-4">
                     Effettua l'accesso per valutare, modificare o eliminare questo gioco.
                 </p>
                 <a href="{{route('login')}}" class="btn btn-primary">Accedi</a>

@@ -12,7 +12,7 @@ class AccessoryController extends Controller implements HasMiddleware
     public static function middleware(){
         return[
             /* new Middleware('auth'), -> blocca tutte le pagine ai guest */ 
-            new Middleware('auth'),
+            new Middleware('auth', except: ['index', 'show']),
         ];
     }
     /**

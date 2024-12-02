@@ -17,7 +17,7 @@
                     <a class="nav-link" href="{{route('console.index')}}">Consoles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('accessory.index')}}">Accessory</a>
+                    <a class="nav-link" href="{{route('accessory.index')}}">Accessories</a>
                 </li>
                 @auth
                 <li class="nav-item">
